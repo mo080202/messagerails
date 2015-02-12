@@ -1,0 +1,27 @@
+.container
+  .blog-header
+    h1.blog-title Post a message
+
+  .row
+    .col-sm-8.blog-main
+      .blog-post
+      - for message in @messages
+        p= message["message"]
+        p.blog-post-meta
+          | Posted by
+          strong<>= message["username"]
+          | at
+          strong<>= message["created_at"]
+        hr
+
+
+  = form_tag
+    div.input-group
+      label for="username" What is your name?
+      input.form-control type="text" name="username" id="username"
+    br
+    label for="message" What is your message?
+    textarea.form-control name="message" rows="5" cols="80"
+    br
+    button.btn.btn-primary type="submit" Post
+    br
